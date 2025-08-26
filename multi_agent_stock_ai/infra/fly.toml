@@ -1,0 +1,10 @@
+
+app = "multi-agent-stock-ai"
+primary_region = "sjc"
+
+[build]
+  dockerfile = "backend/rust_agents/trend_agent/Containerfile"
+
+[env]
+  BROKER_API_KEY = "your_key_here"
+  BROKER_SECRET = "your_secret_here"

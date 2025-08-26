@@ -1,0 +1,82 @@
+version: "3.9"
+services:
+  db:
+    image: docker.io/postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mai
+    ports: ["5432:5432"]
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Containerfile
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/mai
+      RUST_LOG: api=info
+      BIND_ADDR: 0.0.0.0:8080
+      SUPABASE_JWT_SECRET: devsecret
+      JWT_AUDIENCE: authenticated
+      JWT_ISSUER: http://localhost/auth
+      BACKTEST_SVC_URL: http://backtest_svc:8081
+      PORTFOLIO_SVC_URL: http://portfolio_svc:8082
+      OTLP_ENDPOINT: http://otel:4317
+      BUS_ENABLED: "1"
+      BUS_BROKERS: redpanda:9092
+      BUS_TOPIC: mai.events
+      REDIS_URL: redis://redis:6379/
+    depends_on: [db, backtest_svc, portfolio_svc, redpanda, redis, otel]
+    ports: ["8080:8080", "9000:9000"]
+
+  backtest_svc:
+    build:
+      context: ./backtest_svc
+      dockerfile: Containerfile
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/mai
+      RUST_LOG: backtest_svc=info
+      BIND_ADDR: 0.0.0.0:8081
+    depends_on: [db]
+    ports: ["8081:8081"]
+
+  portfolio_svc:
+    build:
+      context: ./portfolio_svc
+      dockerfile: Containerfile
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/mai
+      RUST_LOG: portfolio_svc=info
+      BIND_ADDR: 0.0.0.0:8082
+    depends_on: [db]
+    ports: ["8082:8082"]
+
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:v24.2.5
+    command: ["redpanda", "start", "--overprovisioned", "--smp", "1", "--memory", "1G", "--reserve-memory", "0M", "--node-id", "0", "--check=false"]
+    ports: ["9092:9092", "9644:9644"]
+
+  redis:
+    image: docker.io/redis:7-alpine
+    ports: ["6379:6379"]
+
+  otel:
+    image: otel/opentelemetry-collector:0.105.0
+    volumes: ["./otel-config.yaml:/etc/otelcol/config.yaml:ro"]
+    command: ["--config=/etc/otelcol/config.yaml"]
+    ports: ["4317:4317"]
+
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    volumes: ["./prometheus.yaml:/etc/prometheus/prometheus.yml:ro"]
+    ports: ["9090:9090"]
+
+  grafana:
+    image: grafana/grafana:10.4.5
+    ports: ["3000:3000"]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+
+volumes:
+  db_data:

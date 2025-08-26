@@ -1,0 +1,12 @@
+name: auraluxe_app
+description: Auraluxe compact
+publish_to: 'none'
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.2
+  just_audio: ^0.9.39
+flutter:
+  uses-material-design: true

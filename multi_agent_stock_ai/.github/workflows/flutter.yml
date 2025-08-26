@@ -1,0 +1,25 @@
+
+name: Flutter Build & Test
+
+on:
+  push:
+    paths:
+      - 'flutter_app/**'
+  pull_request:
+
+jobs:
+  flutter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.1'
+
+      - name: Install dependencies
+        run: flutter pub get
+        working-directory: flutter_app
+
+      - name: Run tests
+        run: flutter test
+        working-directory: flutter_app

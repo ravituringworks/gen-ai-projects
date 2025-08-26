@@ -1,0 +1,12 @@
+[package]
+name = "ingest_cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+csv = "1"
+serde = { version = "1", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+sqlx = { version = "0.7", features = ["runtime-tokio", "postgres", "chrono"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+anyhow = "1"

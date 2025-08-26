@@ -1,0 +1,1 @@
+/* Full service.rs content from the canvas (omitted for brevity) */

@@ -1,0 +1,9 @@
+[workspace]
+members = [
+  "common",
+  "api",
+  "backtest_svc",
+  "portfolio_svc",
+  "ingest_cli",
+]
+resolver = "2"
