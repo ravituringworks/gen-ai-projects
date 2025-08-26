@@ -1,0 +1,63 @@
+.portfolio-container {
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: white;
+  height: 100%;
+}
+
+.portfolio-section {
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.portfolio-section h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.portfolio-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.portfolio-section th,
+.portfolio-section td {
+  border: 1px solid #3a3f47;
+  padding: 8px;
+  text-align: left;
+}
+
+.portfolio-section th {
+  background-color: #3a3f47;
+}
+
+.add-holding-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.add-holding-form input {
+  padding: 8px;
+  border: 1px solid #3a3f47;
+  border-radius: 4px;
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.add-holding-form button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-holding-form button:hover {
+  background-color: #0056b3;
+}

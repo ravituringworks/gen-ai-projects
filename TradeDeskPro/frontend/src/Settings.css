@@ -1,0 +1,61 @@
+
+.settings-container {
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: white;
+  height: 100%;
+}
+
+.settings-section {
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.settings-section h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #3a3f47;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.setting-item label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.setting-item input[type="number"] {
+  padding: 8px;
+  border: 1px solid #3a3f47;
+  border-radius: 4px;
+  background-color: #1e1e1e;
+  color: white;
+  width: 80px;
+}
+
+.setting-item button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.setting-item button:hover {
+  background-color: #0056b3;
+}

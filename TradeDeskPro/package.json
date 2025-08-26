@@ -1,0 +1,42 @@
+{
+  "name": "tradedeskpro",
+  "version": "1.0.0",
+  "main": "electron.js",
+  "scripts": {
+    "start": "concurrently \"npm run dev --prefix frontend\" \"npm run start-backend\" \"sleep 5 && electron .\"",
+    "electron": "electron .",
+    "start-backend": "cd backend && source venv/bin/activate && uvicorn main:app --reload --port 8000",
+    "build": "npm run build --prefix frontend && electron-builder"
+  },
+  "build": {
+    "appId": "com.tradedeskpro.app",
+    "productName": "TradeDeskPro",
+    "files": [
+      "electron.js",
+      "preload.js",
+      "package.json",
+      "frontend/dist/**",
+      "backend/**"
+    ],
+    "directories": {
+      "buildResources": "resources",
+      "output": "dist"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "dependencies": {
+    "electron": "^37.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron-builder": "^26.0.12"
+  }
+}

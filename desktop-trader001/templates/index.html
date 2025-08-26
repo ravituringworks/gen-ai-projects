@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Trader</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial/dist/chartjs-chart-financial.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for a stock...">
+                <button id="search-button">Search</button>
+            </div>
+            <div id="search-results"></div>
+            <div class="watchlist-container">
+                <h2>Watchlist</h2>
+                <ul id="watchlist"></ul>
+            </div>
+        </div>
+        <div class="right-panel">
+            <div class="chart-controls">
+                <button class="time-range-btn" data-range="1D">1D</button>
+                <button class="time-range-btn" data-range="5D">5D</button>
+                <button class="time-range-btn" data-range="1M">1M</button>
+                <button class="time-range-btn" data-range="6M">6M</button>
+                <button class="time-range-btn" data-range="1Y">1Y</button>
+            </div>
+            <canvas id="chart"></canvas>
+        </div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+
+.order-entry-container {
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: white;
+  height: 100%;
+}
+
+.order-form {
+  max-width: 500px;
+  margin-top: 20px;
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #3a3f47;
+  border-radius: 4px;
+  background-color: #1e1e1e;
+  color: white;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.form-group select {
+  appearance: none; /* Remove default select arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2C114.1L146.2%2C254.9L5.4%2C114.1L0%2C108.5L146.2%2C0L292.4%2C108.5z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  background-size: 12px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
