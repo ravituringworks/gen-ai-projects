@@ -1,0 +1,56 @@
+{
+  "uid": "mi-api",
+  "title": "Market Intel \u2014 API",
+  "schemaVersion": 38,
+  "version": 1,
+  "panels": [
+    {
+      "type": "graph",
+      "title": "API Requests (rate)",
+      "targets": [
+        {
+          "expr": "rate(http_requests_total[5m])",
+          "legendFormat": "req/s"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      }
+    },
+    {
+      "type": "graph",
+      "title": "API Errors (5xx)",
+      "targets": [
+        {
+          "expr": "rate(http_requests_errors_total[5m])",
+          "legendFormat": "err/s"
+        }
+      ],
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      }
+    },
+    {
+      "type": "graph",
+      "title": "Backtests per minute",
+      "targets": [
+        {
+          "expr": "rate(mai_backtests_total[5m])",
+          "legendFormat": "backtests/m"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      }
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 FROM docker.io/rust:1.79 as builder
 WORKDIR /app
 COPY ../Cargo.toml ./
-COPY ../../common ./common
+COPY ../common ./common
 COPY . ./backtest_svc
 RUN cargo build --release -p backtest_svc
 

@@ -62,3 +62,24 @@ flutter run -d chrome --dart-define=API_BASE_URL=http://localhost:8080
 - `.github/workflows/cd.yml` builds/pushes images to GHCR and deploys with Helm.
 - Required secrets:
   - `KUBE_CONFIG_BASE64` — base64-encoded kubeconfig for the target cluster.
+
+
+## Optimizer — Sector/β Caps & Turnover
+`portfolio_svc` now accepts:
+- `sectors` (parallel to `universe`), `sector_caps` (per-sector max)
+- `betas`, `beta_target`, `beta_tolerance`
+- `turnover_limit` and optional `prev_weights` to enforce `||w - w_prev||_1 ≤ τ`
+
+Solving uses projected gradient with:
+- L1 projection for **gross** and **turnover** constraints
+- sector caps clipping and **beta rails** adjustment
+
+## Grafana Provisioning
+Grafana auto-loads a **Prometheus** datasource and an **API dashboard** from `backend/grafana/provisioning/`.
+Customize or add panels under `dashboards/json/`.
+
+## Skaffold
+Rapid k8s iteration:
+```bash
+skaffold dev -p dev
+```

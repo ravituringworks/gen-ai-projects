@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   db:
-    image: docker.io/postgres:16-alpine
+    image: docker.io/postgres:17-alpine
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: mai
@@ -58,7 +58,7 @@ services:
     ports: ["9092:9092", "9644:9644"]
 
   redis:
-    image: docker.io/redis:7-alpine
+    image: docker.io/redis:8-alpine
     ports: ["6379:6379"]
 
   otel:
@@ -77,6 +77,8 @@ services:
     ports: ["3000:3000"]
     environment:
       GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
 
 volumes:
   db_data:

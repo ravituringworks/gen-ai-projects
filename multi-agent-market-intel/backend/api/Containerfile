@@ -1,7 +1,7 @@
 FROM docker.io/rust:1.79 as builder
 WORKDIR /app
 COPY ../Cargo.toml ../rust-toolchain.toml ./
-COPY ../common ./common
+COPY ../../common ./common
 COPY . ./api
 RUN cargo build --release -p api
 

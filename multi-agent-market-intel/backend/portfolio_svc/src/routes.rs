@@ -14,6 +14,13 @@ pub struct OptReq {
   pub gross_max: f64,
   pub per_name_max: f64,
   pub per_name_min: f64,
+  pub sectors: Vec<String>,            // parallel to universe
+  pub sector_caps: Option<Vec<(String, f64)>>, // (sector, max_weight)
+  pub betas: Option<Vec<f64>>,         // CAPM beta per symbol
+  pub beta_target: Option<f64>,
+  pub beta_tolerance: Option<f64>,
+  pub turnover_limit: Option<f64>,     // L1 constraint on changes vs prev
+  pub prev_weights: Option<Vec<f64>>,  // optional previous weights parallel to universe
 }
 
 #[derive(serde::Serialize)]

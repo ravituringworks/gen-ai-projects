@@ -1,0 +1,40 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+metadata:
+  name: market-intel
+build:
+  artifacts:
+  - image: ghcr.io/YOURORG/mai-api
+    context: backend/api
+    docker:
+      dockerfile: Containerfile
+  - image: ghcr.io/YOURORG/mai-backtest
+    context: backend/backtest_svc
+    docker:
+      dockerfile: Containerfile
+  - image: ghcr.io/YOURORG/mai-portfolio
+    context: backend/portfolio_svc
+    docker:
+      dockerfile: Containerfile
+deploy:
+  helm:
+    releases:
+    - name: market-intel
+      chartPath: charts/market-intel
+      namespace: mai
+      createNamespace: true
+      valuesFiles: [charts/market-intel/values.yaml]
+      setValues:
+        image.org: YOURORG
+profiles:
+- name: dev
+  deploy:
+    helm:
+      releases:
+      - name: market-intel
+        chartPath: charts/market-intel
+        namespace: mai
+        createNamespace: true
+        valuesFiles: [charts/market-intel/values.yaml]
+        setValues:
+          image.org: YOURORG

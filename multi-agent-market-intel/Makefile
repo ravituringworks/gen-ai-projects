@@ -58,3 +58,12 @@ helm-install:
 
 helm-uninstall:
 	helm uninstall $(RELEASE) -n $(NAMESPACE) || true
+
+
+# --- Skaffold ---
+.PHONY: sk-dev sk-run
+sk-dev:
+	skaffold dev -p dev
+
+sk-run:
+	skaffold run -p dev
