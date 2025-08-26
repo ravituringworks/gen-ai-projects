@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+service PortfolioService {
+  rpc GetHoldings (GetHoldingsRequest) returns (HoldingsResponse);
+}
+
+message GetHoldingsRequest {}
+
+message Holding {
+  string asset = 1;
+  float qty = 2;
+  float market_value = 3;
+  float avg_cost = 4;
+  float pnl = 5;
+}
+
+message HoldingsResponse {
+  repeated Holding holdings = 1;
+}
+message ErrorResponse {
+  string message = 1;
+}
