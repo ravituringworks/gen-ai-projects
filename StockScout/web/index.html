@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Agent Stock Research Platform</title>
+    <script src="https://unpkg.com/dart-sdk@3.2.3/lib/dart.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2196F3;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error {
+            color: #f44336;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        #output {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Loading Multi-Agent Stock Research Platform...</p>
+    </div>
+    
+    <div id="error" class="error" style="display: none;">
+        <h3>Failed to Load Application</h3>
+        <p id="error-message"></p>
+        <button onclick="location.reload()">Retry</button>
+    </div>
+    
+    <div id="output" style="display: none;"></div>
+    
+    <script>
+        // Check if running in Flutter web environment
+        if (typeof dartMainRunner !== 'undefined') {
+            dartMainRunner(function() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('output').style.display = 'block';
+            });
+        } else {
+            // Fallback: Load main.dart.js
+            const script = document.createElement('script');
+            script.src = './main.dart.js';
+            script.onload = function() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('output').style.display = 'block';
+            };
+            script.onerror = function() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error-message').textContent = 
+                    'Failed to load the Flutter application. Please ensure the Dart/Flutter web build is available.';
+            };
+            document.head.appendChild(script);
+        }
+        
+        // API endpoint configuration
+        window.API_BASE_URL = 'http://localhost:8000/api';
+        
+        // Global error handler
+        window.addEventListener('error', function(e) {
+            console.error('Application error:', e);
+            if (document.getElementById('output').style.display === 'none') {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error-message').textContent = 
+                    'An error occurred while loading the application: ' + e.message;
+            }
+        });
+    </script>
+</body>
+</html>

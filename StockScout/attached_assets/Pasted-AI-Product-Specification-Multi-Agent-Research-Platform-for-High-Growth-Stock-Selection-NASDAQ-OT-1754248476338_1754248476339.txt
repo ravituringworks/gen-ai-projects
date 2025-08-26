@@ -1,0 +1,55 @@
+AI Product Specification: Multi-Agent Research Platform for High-Growth Stock Selection (NASDAQ & OTC)
+
+Product Overview
+A platform of interoperable AI agents leveraging Agent-to-Agent (A2A) and Model Context Protocol (MCP) technologies to autonomously research, evaluate, and select the top 100 NASDAQ and OTC stocks with the highest potential for significant growth in the next trading day, week, and month. Agents communicate, delegate tasks, and share real-time context to ensure exhaustive, up-to-date analysis and optimal decision-making.
+
+Software to use:
+- among others, use of Dart, supabase, postgresql,  rust, Flutter 
+Core Objectives
+	•	Research all active NASDAQ and OTC stocks.
+	•	Autonomously pick the top 100 high-growth candidates for short- (1 day), medium- (1 week), and near-term (1 month) horizons.
+	•	Explain and support picks with AI-generated research rationales, statistics, and rankings.
+	•	Update and execute stock screening/research daily with new market data.
+System Architecture
+1. A2A Agent Layer
+	•	A2A Protocol Implementation: All agents use the Agent-to-Agent communication protocol, ensuring interoperable collaboration, decentralized decision-making, and easy extensibility (integrating new analytics, sources, or assessment agents without rewrites).
+	•	Agent Specializations:
+	•	Data Acquisition Agents: Fetch stock lists, prices, news, filings, sentiment, and fundamentals for all NASDAQ and OTC stocks.
+	•	Analysis Agents: Focus on trend analysis, volume shifts, technical and fundamental screening, social/sentiment analysis.
+	•	Short-term, Medium-term, Long-term Agents: Each dedicated to forecasting for 1 day, 1 week, 1 month, using appropriate models and signals.
+	•	Coordinating Master Agent: Orchestrates work distribution, gathers results, manages conflicts, and finalizes the top 100 list.
+	•	Agent Cards & Discovery: Each agent advertises its unique skills and supported protocols, enabling peer agents to delegate tasks efficiently.
+2. MCP Integration Layer
+	•	MCP Protocol: Agents leverage MCP to access and perform actions on external data sources and tools (APIs for market data, broker platforms, news feeds, etc.)—abstracting away provider differences and enabling real-time, secure information processing.
+	•	Context Sharing: Working memory and context (prior results, current market state, agent actions) are universally available to all agents for smarter cross-checking and temporal awareness.
+	•	Extensibility: MCP’s standardized tool discovery lets the system add new data sources or AI models without custom code.
+Core Workflow
+	1.	Comprehensive Market Scanning
+	•	Data Acquisition Agents connect via MCP to fetch complete universe of NASDAQ and OTC stocks, pulling live prices, volume, news, and financials.
+	2.	Multi-Factor Analysis
+	•	Analysis Agents run factor screens (momentum, earnings, sentiment, volume spikes, unusual options, etc.).
+	•	Specialized forecaster agents (1 day/1 week/1 month) apply predictive models tailored to each time frame, coordinating via A2A to share intermediate findings.
+	3.	Result Synthesis & Ranking
+	•	All analysis and candidate lists converge at the Master Agent, which fuses results, weighs signals, resolves duplicates, and generates final justified top 100 picks for each time window.
+	•	Rationales, statistical backtests, and risk flags are documented for user transparency.
+	4.	Continuous Update Cycle
+	•	System runs on a rolling/daily schedule, ingesting new data and auto-adapting AI models as markets change.
+Key Features
+	•	Full automation: Zero manual screening; agents drive all data gathering, analysis, cross-checking, and ranking efforts.
+	•	Explainability: Every top-100 pick comes with generated explanations, key stats, and model rationales.
+	•	Security and Audit: All agent communications (A2A/MCP) are monitored, logged, and governed for compliance and traceability.
+	•	Modularity: Easy agent or model replacement/extension due to clear A2A and MCP separation of concerns.
+	•	Performance: Agents run operations in parallel, ensuring rapid, up-to-date results despite the vast stock universe.
+
+
+Example Use Case Flow
+	1.	At 4 PM after market close, the platform triggers a full scan of all NASDAQ and OTC listings.
+	2.	MCP-enabled Data Agents ingest prices, news, and analytics from APIs and feeds.
+	3.	A2A Analysis Agents run signal screens and predictive models for each horizon; agents share partial findings, debate candidates, and escalate standout cases.
+	4.	The Master Agent aggregates inputs, applies meta-ranking logic tuned for volatility/upside, and outputs three lists of 100 stocks (one each for day/week/month growth).
+	5.	Lists (with research justifications) are sent to users and optionally integrated with broker APIs for further action.
+References to Protocols & Lists
+	•	A2A: Agent-to-Agent protocol for direct, secure multi-agent AI collaboration and communication, introduced by Google/industry partners in 2025.
+	•	MCP: Model Context Protocol for unified, context-aware AI-to-tool and data integration, pioneered by Anthropic and standardized for broad LLM use.
+	•	Stock Lists: NASDAQ and OTC listings retrievable from official market feeds and comprehensive screener tools.
+This specification enables a highly modular, up-to-date, explainable, and fully autonomous stock research and ranking system ready for enterprise or advanced individual use.

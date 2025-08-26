@@ -1,0 +1,9 @@
+/Users/ravindraboddipalli/sources/Generated/StockScout-4/target/debug/deps/serial_test-75158758aedba27d.d: /Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/lib.rs /Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/code_lock.rs /Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/parallel_code_lock.rs /Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/rwlock.rs /Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/serial_code_lock.rs
+
+/Users/ravindraboddipalli/sources/Generated/StockScout-4/target/debug/deps/libserial_test-75158758aedba27d.rmeta: /Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/lib.rs /Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/code_lock.rs /Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/parallel_code_lock.rs /Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/rwlock.rs /Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/serial_code_lock.rs
+
+/Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/lib.rs:
+/Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/code_lock.rs:
+/Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/parallel_code_lock.rs:
+/Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/rwlock.rs:
+/Users/ravindraboddipalli/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serial_test-3.2.0/src/serial_code_lock.rs:
