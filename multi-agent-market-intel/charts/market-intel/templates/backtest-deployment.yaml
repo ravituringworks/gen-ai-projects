@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backtest-svc
+spec:
+  replicas: {{ .Values.backtest.replicaCount }}
+  selector: { matchLabels: { app: backtest-svc } }
+  template:
+    metadata: { labels: { app: backtest-svc } }
+    spec:
+      containers:
+      - name: backtest-svc
+        image: "{{ .Values.image.registry }}/{{ .Values.image.org }}/mai-backtest:{{ .Values.image.tag }}"
+        ports: [{ containerPort: 8081 }]
+        env:
+        {{- range $k, $v := .Values.backtest.env }}
+          - name: {{ $k }}
+            value: "{{ $v }}"
+        {{- end }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backtest-svc
+spec:
+  selector: { app: backtest-svc }
+  ports: [{ name: http, port: 8081, targetPort: 8081 }]

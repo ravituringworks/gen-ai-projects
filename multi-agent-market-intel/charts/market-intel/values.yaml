@@ -1,0 +1,35 @@
+image:
+  registry: ghcr.io
+  org: YOURORG
+  tag: "dev"
+
+api:
+  replicaCount: 2
+  resources:
+    requests: { cpu: "200m", memory: "256Mi" }
+    limits:   { cpu: "1", memory: "1Gi" }
+  env:
+    DATABASE_URL: "postgres://postgres:postgres@db:5432/mai"
+    RUST_LOG: "api=info"
+    SUPABASE_JWT_SECRET: "replace_me"
+    JWT_AUDIENCE: "authenticated"
+    JWT_ISSUER: "https://YOUR.supabase.co/auth/v1"
+    BACKTEST_SVC_URL: "http://backtest-svc:8081"
+    PORTFOLIO_SVC_URL: "http://portfolio-svc:8082"
+    BUS_ENABLED: "1"
+    BUS_BROKERS: "redpanda:9092"
+    BUS_TOPIC: "mai.events"
+    REDIS_URL: "redis://redis:6379/"
+    OTLP_ENDPOINT: "http://otel-collector:4317"
+
+backtest:
+  replicaCount: 1
+  env:
+    DATABASE_URL: "postgres://postgres:postgres@db:5432/mai"
+    RUST_LOG: "backtest_svc=info"
+
+portfolio:
+  replicaCount: 1
+  env:
+    DATABASE_URL: "postgres://postgres:postgres@db:5432/mai"
+    RUST_LOG: "portfolio_svc=info"

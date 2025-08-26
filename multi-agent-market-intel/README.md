@@ -46,3 +46,19 @@ flutter run -d chrome --dart-define=API_BASE_URL=http://localhost:8080
 - Replace demo expected-returns with model μ from your signals.
 - Wire corporate actions fully (use view `v_ohlcv_adj` for adjusted prices).
 - Ensure AWS S3 Object Lock is enabled in your account before `terraform apply`.
+
+
+## Dev Scripts & Makefile
+- `make dev-up` / `make dev-down` — run local stack
+- `make seed-demo` — generate demo OHLCV and ingest via `ingest_cli`
+- `make images && make push IMAGE_PREFIX=ghcr.io/YOURORG` — build/push images
+- `make helm-install IMAGE_PREFIX=ghcr.io/YOURORG TAG=$(git rev-parse --short HEAD)` — deploy to k8s
+
+## Helm
+- Umbrella chart at `charts/market-intel` with Deployments/Services/HPA for all services.
+- Configure `values.yaml` (`image.org`, env, DB URL, etc.) or override with `--set` flags.
+
+## GitHub Actions CD
+- `.github/workflows/cd.yml` builds/pushes images to GHCR and deploys with Helm.
+- Required secrets:
+  - `KUBE_CONFIG_BASE64` — base64-encoded kubeconfig for the target cluster.

@@ -1,0 +1,6 @@
+apiVersion: v2
+name: market-intel
+description: Umbrella chart for Market Intelligence services
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

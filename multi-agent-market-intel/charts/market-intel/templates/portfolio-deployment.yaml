@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-svc
+spec:
+  replicas: {{ .Values.portfolio.replicaCount }}
+  selector: { matchLabels: { app: portfolio-svc } }
+  template:
+    metadata: { labels: { app: portfolio-svc } }
+    spec:
+      containers:
+      - name: portfolio-svc
+        image: "{{ .Values.image.registry }}/{{ .Values.image.org }}/mai-portfolio:{{ .Values.image.tag }}"
+        ports: [{ containerPort: 8082 }]
+        env:
+        {{- range $k, $v := .Values.portfolio.env }}
+          - name: {{ $k }}
+            value: "{{ $v }}"
+        {{- end }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-svc
+spec:
+  selector: { app: portfolio-svc }
+  ports: [{ name: http, port: 8082, targetPort: 8082 }]
